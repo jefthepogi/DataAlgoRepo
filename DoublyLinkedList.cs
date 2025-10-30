@@ -9,16 +9,56 @@ namespace Manongas_DataAlgo {
         public void Add(int value)
         {
             // TODO: Complete the function
+            Count++; // Increment count var.
+            Node new_node = new Node(value); // Initialize a new node
+
+            if (Head == null) {
+                Head = new_node;
+                Tail = new_node;
+                Head.PreviousNode = null;
+                return;
+            }
+            Tail.NextNode = new_node; // Point next node of the current tail to the new node.
+            new_node.PreviousNode = Tail; // Point previous node of the new node to the current tail.
+            Tail = new_node; // Replace tail with the new node.
         }
 
         public void Insert(int index, int value)
         {
             // TODO: Complete the function
+            Node ptr = Head;
+            int idx = 0;
+            while (ptr == null) 
+            {   
+                if (idx == index - 1)
+                {
+                    Node next_node = ptr.NextNode;
+                    Node new_node = new Node(value);
+                    new_node.PreviousNode = ptr;
+                    new_node.Value = value;
+                    next_node.PreviousNode = new_node;
+                    ptr.NextNode = new_node;
+                }
+                ptr = ptr.NextNode;
+                idx++;
+            }
+            
         }
 
         public int Get(int index)
         {
             // TODO: Complete the function
+            Node ptr = Head; // Initialize current pointer to Head.
+            int idx = 0; // initialize initial index to zero.
+            while (ptr != null) // Iterate if current pointer is not null.
+            {
+                if (idx == index) // If the idx matches the index value then return current node's value.
+                {
+                    return ptr.Value;
+                }
+                idx++;
+                ptr = ptr.NextNode; // Proceed to next node.
+            }
             return -1;
         }
 
@@ -30,11 +70,52 @@ namespace Manongas_DataAlgo {
         public void RemoveAt(int index)
         {
             // TODO: Complete the function
+            Node ptr = Head;
+            int idx = 0;
+            while (ptr != null)
+            {
+                Console.WriteLine("wdw");
+                if (idx == index)
+                {
+                    Node prev_node = ptr.PreviousNode;
+                    if (prev_node == null) 
+                    {
+                        Head = ptr.NextNode;
+                        Count--;
+                    }
+                    else if (ptr.NextNode != null)
+                    {
+                        prev_node.NextNode = ptr.NextNode;
+                        Count--;
+                    }
+                    else {
+                        prev_node.NextNode = null;
+                        Count--;
+                    }
+                    break;
+                }
+
+                ptr = ptr.NextNode;
+                idx++;
+            }
         }
 
-        public void Search(int value)
+        public int Search(int value)
         {
             // TODO: Complete the function
+            Node ptr = Head; // Initialize current pointer to Head.
+            int idx = 0; // initialize initial index to zero.
+            while (ptr != null) // Iterate if current pointer is not null
+            {
+                if (value == ptr.Value) // Check if parameter is equal to the current node value.
+                {
+                    return idx; // Return index.
+                }
+
+                idx++; // Increment index.
+                ptr = ptr.NextNode; // Proceed to the next node.
+            }
+            return -1;
         }
 
         public int GetMin()
@@ -53,6 +134,7 @@ namespace Manongas_DataAlgo {
     public class Node
     {
         public Node NextNode = null;
+        public Node PreviousNode = null; // Added new field that tracks the previous node.
         public int Value;
 
         public Node(int value)
