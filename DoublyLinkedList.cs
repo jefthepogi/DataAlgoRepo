@@ -15,7 +15,6 @@ namespace Manongas_DataAlgo {
             if (Head == null) {
                 Head = new_node;
                 Tail = new_node;
-                Head.PreviousNode = null;
                 return;
             }
             Tail.NextNode = new_node; // Point next node of the current tail to the new node.
@@ -100,19 +99,17 @@ namespace Manongas_DataAlgo {
         public void RemoveAt(int index)
         {
             // TODO: Complete the function
-            if (index < 0) // This is to allow negative indexing
-            { 
-                index = Count + index;
-            }
 
-            if (index >= Count || index < 0) 
-            {
-                Console.WriteLine("\nRemoveAt({0}): Index bound error.", index);
-                return;
-            }
-
-            Node ptr = Head;
+            Node ptr = null;
             int idx = 0;
+            if (index > -1) {
+                ptr = Head;
+            } else { // Start from the tail if negative indexing.
+                ptr = Tail;
+                idx = -1;
+            }
+
+            
             while (ptr != null)
             {
                 if (idx == index)
@@ -135,8 +132,14 @@ namespace Manongas_DataAlgo {
                     break;
                 }
 
-                ptr = ptr.NextNode;
-                idx++;
+                
+                if (index >= 0) {
+                    ptr = ptr.NextNode;
+                    idx++;
+                } else { // Traverse backwards if negative indexing
+                    ptr = ptr.PreviousNode;
+                    idx--;
+                }
             }
         }
 
