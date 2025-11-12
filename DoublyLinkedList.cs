@@ -211,37 +211,37 @@ namespace Manongas_DataAlgo {
 
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            var myList = new DoublyLinkedList();
+        //public static void Main(string[] args)
+        //{
+        //    var myList = new DoublyLinkedList();
 
-            myList.Add(1);
-            myList.Add(2);
-            myList.Add(3);
-            myList.Add(4);
-            myList.Add(5);
+        //    myList.Add(1);
+        //    myList.Add(2);
+        //    myList.Add(3);
+        //    myList.Add(4);
+        //    myList.Add(5);
 
-            Console.WriteLine("The number of items in the list: " + myList.Count);
-            PrintList(myList); // 1 2 3 4 5
+        //    Console.WriteLine("The number of items in the list: " + myList.Count);
+        //    PrintList(myList); // 1 2 3 4 5
 
-            myList.RemoveAt(0);
-            Console.WriteLine("\nAfter removing index 0, the number of items in the list " + myList.Count);
-            PrintList(myList); // 2 3 4 5
+        //    myList.RemoveAt(0);
+        //    Console.WriteLine("\nAfter removing index 0, the number of items in the list " + myList.Count);
+        //    PrintList(myList); // 2 3 4 5
 
-            myList.RemoveAt(-1);
-            Console.WriteLine("\nRemove index -1 from the last item, the number of items in the list " + myList.Count);
-            PrintList(myList); // 2 3 4 (removing last item)
+        //    myList.RemoveAt(-1);
+        //    Console.WriteLine("\nRemove index -1 from the last item, the number of items in the list " + myList.Count);
+        //    PrintList(myList); // 2 3 4 (removing last item)
 
-            myList.Insert(2, value: 10);
-            Console.WriteLine("\nAfter inserting at index 2, the number of items in the list: " + myList.Count);
-            PrintList(myList); // 2 3 10 4
+        //    myList.Insert(2, value: 10);
+        //    Console.WriteLine("\nAfter inserting at index 2, the number of items in the list: " + myList.Count);
+        //    PrintList(myList); // 2 3 10 4
 
-            Console.WriteLine("\nSearch 10: " + myList.Search(10)); // 2
-            Console.WriteLine("\nMin: " + myList.GetMin()); // 2
-            Console.WriteLine("\nMax: " + myList.GetMax()); // 10
+        //    Console.WriteLine("\nSearch 10: " + myList.Search(10)); // 2
+        //    Console.WriteLine("\nMin: " + myList.GetMin()); // 2
+        //    Console.WriteLine("\nMax: " + myList.GetMax()); // 10
 
-            Console.ReadKey();
-        }
+        //    Console.ReadKey();
+        //}
 
         static void PrintList(DoublyLinkedList list)
         {
